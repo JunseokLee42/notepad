@@ -1,21 +1,21 @@
 asttokens==2.4.1
 backcall==0.2.0
-blinker @ file:///C:/b/abs_d9y2dm7cw2/croot/blinker_1696539752170/work
-click @ file:///C:/b/abs_f9ihnt72pu/croot/click_1698129847492/work
+blinker
+click
 colorama==0.4.6
 comm==0.2.2
 debugpy==1.8.2
 decorator==5.1.1
 executing==2.0.1
-Flask @ file:///C:/b/abs_f9w7doyu0h/croot/flask_1716545924884/work
+Flask
 ipykernel==6.29.5
 ipython==8.26.0
-itsdangerous @ file:///C:/b/abs_c4vwgdr5yn/croot/itsdangerous_1716533399914/work
+itsdangerous
 jedi==0.19.1
-Jinja2 @ file:///C:/b/abs_ddyeze2h6_/croot/jinja2_1730903330414/work
+Jinja2
 jupyter_client==8.6.2
 jupyter_core==5.7.2
-MarkupSafe @ file:///C:/b/abs_ecfdqh67b_/croot/markupsafe_1704206030535/work
+MarkupSafe
 matplotlib-inline==0.1.7
 nest-asyncio==1.6.0
 parso==0.8.4
@@ -33,4 +33,4 @@ stack-data==0.6.3
 tornado==6.4.1
 traitlets==5.14.3
 wcwidth==0.2.13
-Werkzeug @ file:///C:/b/abs_b21bhstb1q/croot/werkzeug_1731005800632/work
+Werkzeug
