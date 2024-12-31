@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Notepad</title>
+    <style>
+        textarea {
+            width: 100%;
+            height: 400px;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>노트패드 데모</h1>
+    <textarea id="content"></textarea>
+    <br>
+    <button type="button" onclick="newFile()">New File</button>
+    <button type="button" onclick="saveAs()">Save As</button>
+    <button type="button" onclick="openFile()">Open File</button>
+
+    <script>
+        let fileHandle;
+
+        async function newFile() {
+            const confirmNew = confirm('새로운 파일을 만드시겠습니까? 기존의 파일 내용은 모두 삭제됩니다.');
+            if (confirmNew) {
+                document.getElementById('content').value = '';
+                fileHandle = null;
+                alert('새 파일이 생성되었습니다.');
+            }
+        }
+
+        async function saveAs() {
+            const content = document.getElementById('content').value;
+
+            try {
+                const handle = await window.showSaveFilePicker({
+                    suggestedName: 'note.txt',
+                    types: [
+                        {
+                            description: 'Text Files',
+                            accept: {
+                                'text/plain': ['.txt'],
+                            },
+                        },
+                    ],
+                });
+                const writable = await handle.createWritable();
+                await writable.write(content);
+                await writable.close();
+                fileHandle = handle;
+                alert('파일이 저장되었어요!');
+            } catch (error) {
+                console.error('저장에 실패했어요.', error);
+            }
+        }
+
+        async function openFile() {
+            try {
+                [fileHandle] = await window.showOpenFilePicker({
+                    types: [
+                        {
+                            description: 'Text Files',
+                            accept: {
+                                'text/plain': ['.txt'],
+                            },
+                        },
+                    ],
+                });
+                const file = await fileHandle.getFile();
+                const content = await file.text();
+                document.getElementById('content').value = content;
+            } catch (error) {
+                console.error('파일 여는데 실패했어요', error);
+            }
+        }
+    </script>
+</body>
+</html>
